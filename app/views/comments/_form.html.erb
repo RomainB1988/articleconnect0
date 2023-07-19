@@ -1,0 +1,10 @@
+<%= form_with(model: [ @post, Comment.new ], url: post_comments_path(@post)) do |form| %>
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content, rows: 5 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Ajouter un commentaire" %>
+  </div>
+<% end %>

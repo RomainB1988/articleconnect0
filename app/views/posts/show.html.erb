@@ -1,0 +1,15 @@
+<h1><%= @post.title %></h1>
+
+<p><%= @post.content %></p>
+
+<p><strong>URL :</strong> <%= link_to @post.url, @post.url %></p>
+
+<h2>Commentaires :</h2>
+<% @post.comments.each do |comment| %>
+  <p><strong><%= comment.user.nickname %>:</strong> <%= comment.content %></p>
+<% end %>
+
+<h2>Ajouter un commentaire :</h2>
+<%= render 'comments/form' %>
+
+<%= link_to "Retourner à la liste des publications", posts_path %>

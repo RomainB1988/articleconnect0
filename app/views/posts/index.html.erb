@@ -1,0 +1,12 @@
+<h1>Liste des publications</h1>
+
+<ul>
+  <% @posts.each do |post| %>
+    <li>
+      <strong><%= post.title %></strong> - <%= post.user.nickname %>
+      <%= link_to "Détails", post_path(post) %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Créer une nouvelle publication", new_post_path %>
