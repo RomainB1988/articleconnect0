@@ -1,2 +1,15 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>Bienvenue sur notre plateforme de publications !</h1>
+
+<p>Consultez les dernières publications :</p>
+
+<ul>
+  <% @posts.each do |post| %>
+    <li>
+      <strong><%= post.title %></strong>
+      <p><%= post.content %></p>
+      <%= link_to "Détails", post_path(post) %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Nouvelle publication", new_post_path %>
