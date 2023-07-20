@@ -6,8 +6,7 @@ Rails.application.routes.draw do
   get 'home/index'
   root to: 'home#index'
 
-  resources :posts, only: [:new, :create]
-  resources :posts, only: [:index, :show] do
-    resources :comments, only: [:create]
+  resources :posts, only: [:new, :create, :index, :show, :destroy] do
+    resources :comments, only: [:create, :destroy]
   end
 end
