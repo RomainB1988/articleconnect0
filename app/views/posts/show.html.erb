@@ -1,12 +1,20 @@
 <h1><%= @post.title %></h1>
 
 <p><%= @post.content %></p>
-
+<% if @post.user == current_user %>
+  <%= link_to "Supprimer", @post, method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cette publication ?" } %>
+<% end %>
 <p><strong>URL :</strong> <%= link_to @post.url, @post.url %></p>
 
 <h2>Commentaires :</h2>
 <% @post.comments.each do |comment| %>
-  <p><strong><%= comment.user.nickname %>:</strong> <%= comment.content %></p>
+  <p>
+  <strong><%= comment.user.nickname %>:</strong>
+  <%= comment.content %>
+  <% if comment.user == current_user %>
+    <%= link_to "Supprimer", post_comment_path(@post, comment), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce commentaire ?" } %>
+  <% end %>
+</p>
 <% end %>
 
 <h2>Ajouter un commentaire :</h2>
