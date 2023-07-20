@@ -24,12 +24,14 @@ class PostsController < ApplicationController
   end
   def destroy
     @post = current_user.posts.find(params[:id])
+    @post.comments.destroy_all  # Supprimer les commentaires associés à la publication
     @post.destroy
     flash[:notice] = "Publication supprimée avec succès."
     redirect_to posts_path
   rescue ActiveRecord::RecordNotFound
-    flash[:alert] = "Vous ne pouvez pas supprimer cette publication."
-    redirect_to root_path
+    # Gérer l'erreur si la publication n'est pas trouvée
+    flash[:alert] = "Publication introuvable."
+    redirect_to posts_path
   end
   private
 

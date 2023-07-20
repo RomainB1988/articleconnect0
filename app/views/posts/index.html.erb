@@ -1,12 +1,19 @@
-<h1>Liste des publications</h1>
+<h2>Liste des publications :</h2>
 
-<ul>
+<div class="container">
   <% @posts.each do |post| %>
-    <li>
-      <strong><%= post.title %></strong> - <%= post.user.nickname %>
-      <%= link_to "Détails", post_path(post) %>
-    </li>
+    <div class="card-product">
+
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+
+      <div class="card-product-infos">
+        <h2><%= post.title %></h2>
+        <p><%= post.content.truncate(100) %></p>
+
+        <%= link_to "Détails", post_path(post) %>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
 
 <%= link_to "Créer une nouvelle publication", new_post_path %>
